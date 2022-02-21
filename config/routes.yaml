@@ -1,0 +1,9 @@
+index:
+    path: /
+    controller: App\Controller\TicketController::index
+    methods: GET
+
+create_ticket:
+    path: /ticket
+    controller: App\Controller\TicketController::createTicket
+    methods: POST

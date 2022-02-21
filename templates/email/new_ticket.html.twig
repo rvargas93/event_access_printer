@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Congratulations {{name}} {{lastName}}!</h1>
+
+    <p> You have booked a new ticket at {{createdAt | date("m/d/Y")}} </p>
+    <p> With this qr code you can be accredited: </p>
+
+    <img src="{{ qr_code_url('https://www.google.es/') }}" />
+{% endblock %}
+

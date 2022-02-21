@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  php:
+    build: .
+    volumes:
+      - ./:/app
+    working_dir: /app
+
+  nginx:
+    image: nginx:stable
+    ports:
+      - 8000:80
+    volumes:
+      - ./.docker/nginx/conf.d/:/etc/nginx/conf.d/
+
+  mysql:
+    image: mysql:8.0.28
+    environment:
+      - MYSQL_ROOT_PASSWORD=userlytics
+      - MYSQL_DATABASE=userlytics
+    volumes:
+      - ./.docker/mysql/db-data:/var/lib/mysql
+
+  node:
+    image: node:14.9
+    volumes:
+      - './:/app'
+    working_dir: /app
+    command: ["tail", "-f", "/dev/null"]
+
+volumes:
+  db-data:

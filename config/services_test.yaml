@@ -1,0 +1,13 @@
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Validator\CreateTicketValidator:
+        public: true
+    
+    App\Service\TicketService:
+        public: true
+
+    App\Service\Email\SenderInterface: '@App\Tests\Mock\SenderMock'
